@@ -29,7 +29,7 @@ class _AccountPagesState extends State<AccountPage> {
             ]),
             const SizedBox(height: 10),
             _buildInfoCard([
-              _buildProfileOption('Email', 'syahrul@gmail.com'),
+              _buildProfileOption('Email', 'NaufalSyahandra@gmail.com'),
               _buildProfileOption('Security Question', 'Set'),
               _buildProfileOption('PIN Settings', ''),
               _buildProfileOption('Language', 'English'),
