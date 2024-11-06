@@ -1,16 +1,21 @@
-# camera_flutter
+# camera_flutter -  Week 9
 
-A new Flutter project.
+## Kelompok 7 :
+1. Asti Nurin Hidayanti / 2241720236 
+2. Ellois Karina Handoyo / 2241720154 
+3. Mohammad Naufal Syahandra / 2241720189 
+4. Rio Bagas Hermawan / 2241720193
 
-## Getting Started
+## Deskripsi Question
+1. Jelaskan maksud void async pada praktikum 1?
+> Jawab :
+> - void async digunakan untuk mendeklarasikan sebuah fungsi yang berjalan secara asinkron. Ini berarti fungsi tersebut dapat menjalankan tugas yang memakan waktu (seperti mengambil data dari internet) tanpa menghentikan eksekusi kode lainnya. Jadi, aplikasi tetap responsif meskipun ada operasi yang memakan waktu lama.
+> - void async digunakan untuk memberitahukan bahwa fungsi tersebut merupakan fungsi asynchronous yang tidak mengembalikan nilai.
+> - Fungsi async digunakan untuk membuat fungsi menjadi asynchronous, sehingga fungsi tersebut dapat berjalan secara parallel dengan fungsi lainnya.
+> - Fungsi async digunakan untuk membuat fungsi yang dapat melakukan operasi I/O tanpa harus menunggu operasi tersebut selesai.
+> - Fungsi async digunakan untuk membuat fungsi yang dapat melakukan operasi yang membutuhkan waktu lama tanpa harus menghentikan proses lainnya.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Jelaskan fungsi dari anotasi @immutable dan @override ?
+> Jawab :
+> - @immutable digunakan untuk mendeklarasikan bahwa sebuah class adalah immutable, yang berarti class tersebut tidak dapat diubah setelah dibuat. Jadi, setelah objek dari class tersebut dibuat, properti dari objek tersebut tidak dapat diubah.
+> - @override digunakan untuk mendeklarasikan bahwa sebuah method merupakan override dari method yang ada di superclass. Jadi, method tersebut akan menggantikan method yang ada di superclass.
