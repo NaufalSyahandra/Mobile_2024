@@ -225,3 +225,47 @@ image, the result number 6 will appear after a delay of 9 seconds.
 > * returnOneAsync, returnTwoAsync, returnThreeAsync: These methods wait for 3 seconds each and then return the values 1, 2, and 3.
 > * count: This method calls all three asynchronous methods in sequence, sums the results, and updates the state with the total. The total time required is 9 seconds because each method waits for 3 seconds.
 
+
+## Practicum 3 - Using Completer in Future
+---
+
+### Step 1: Open the main.dart file
+
+Make sure you have imported the following async package.
+```dart
+import 'package:async/async.dart';
+```
+
+### Step 2: Add variables and methods
+Add late variables and methods in the `_FuturePageState class` like this.
+
+```dart
+late Completer completer;
+
+Future getNumber() {
+  completer = Completer<int>();
+  calculate();
+  return completer.future;
+}
+
+Future calculate() async {
+  await Future.delayed(const Duration(seconds : 5));
+  completer.complete(42);
+}
+```
+
+### Step 3 - Change the contents of the onPressed() code
+
+Add the following code to the onPressed() function. You can comment out the previous code.
+
+```dart
+  onPressed: () {
+    getNumber().then((value) {
+      setState(() {
+        result = value.toString();
+      });
+    });
+  },
+```
+
+![step 3](img_4.png)

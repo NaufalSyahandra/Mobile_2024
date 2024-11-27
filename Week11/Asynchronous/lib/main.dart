@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
@@ -54,9 +55,16 @@ class _FuturePageState extends State<FuturePage> {
               //     setState(() {});
               //   });
               // },
+              // child: const Text('GO!'),
+              // onPressed: () {
+              //   count();
               child: const Text('GO!'),
               onPressed: () {
-                count();
+                getNumber().then((value) {
+                  setState(() {
+                    result = value.toString();
+                  });
+                });
               },
             ),
             const Spacer(),
@@ -102,5 +110,18 @@ class _FuturePageState extends State<FuturePage> {
     setState(() {
       result = total.toString();
     });
+  }
+
+  late Completer completer;
+
+  Future getNumber() {
+    completer = Completer<int>();
+    calculate();
+    return completer.future;
+  }
+
+  Future calculate() async {
+    await Future.delayed(const Duration(seconds: 5));
+    completer.complete(42);
   }
 }
