@@ -107,6 +107,7 @@ Future<Response> getData() async {
   return http.get(url);
 }
 ```
+
 2. Question 2
 
 * Find your favorite book title on Google Books, then replace the book ID in the path variable in
@@ -116,3 +117,111 @@ Future<Response> getData() async {
   message "W11: Question 2".
 
 ![question 2](img.png)
+
+### Step 5: Add code in ElevatedButton
+
+Add code in onPressed in ElevatedButton as follows.
+
+```dart
+ElevatedButton(
+  child: const Text('Go'),
+  onPressed: () {
+    setState(() {});
+    getData().then((value) {
+      result = value.body.toString().substring(0, 450);
+      setState(() {});
+    }).catchError((_) {
+      result = 'An Error Occurred';
+      setState(() {});
+    });
+  },
+)
+,
+```
+
+3. Question 3
+    * Explain the purpose of the code in step 5 regarding substring and catchError!
+    * Capture your lab results in GIF format and attach them to the README. Then commit with the
+      message "W11: Question 3".
+
+> * substring: This method is used to limit the number of characters displayed in the result string.
+    > By using substring(0, 450), the code ensures that only the first 450 characters of the
+    response body
+    > are shown. This is useful for preventing the display of excessively long text, which might be
+    > overwhelming or unnecessary for the user.
+> * catchError: This method is used to handle any errors that occur during the data retrieval
+    process.
+    > If an error occurs while fetching data from the API, the catchError method will catch the
+    error and
+    > set the result string to "An Error Occurred". This provides a user-friendly message indicating
+    that
+    > something went wrong, instead of leaving the user with no feedback or a broken interface.
+> * ![question 3](img_1.png)
+
+
+## Practicum 2 - Using await/async to avoid callbacks
+---
+
+### Step 1: Open the main.dart file
+
+Add three methods containing code like the following inside the `_FuturePageState class`.
+
+```dart
+Future<int> returnOneAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 1;
+}
+
+Future<int> returnTwoAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 2;
+}
+
+Future<int> returnThreeAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 3;
+}
+```
+
+### Step 2: Add the count() method
+
+Then add this method again below the previous three methods.
+
+```dart
+Future count() async {
+  int total = 0;
+  total = await returnOneAsync();
+  total += await returnTwoAsync();
+  total += await returnThreeAsync();
+
+  setState(() {
+    result = total.toString();
+  });
+```
+
+### Step 3: Call count()
+
+Comment out the previous code, change the contents of the onPressed() code to be as follows.
+
+```dart
+ElevatedButton(
+  child: const Text('GO!'),
+  onPressed: () {
+    count();
+  },
+)
+,
+```
+
+### Step 4: Run
+
+Finally, run or press F5 if the application is not running yet. Then you will see the following
+image, the result number 6 will appear after a delay of 9 seconds.
+
+![img_3.png](img_3.png)
+
+4. Question 4
+   Explain the meaning of the code steps 1 and 2!
+> * returnOneAsync, returnTwoAsync, returnThreeAsync: These methods wait for 3 seconds each and then return the values 1, 2, and 3.
+> * count: This method calls all three asynchronous methods in sequence, sums the results, and updates the state with the total. The total time required is 9 seconds because each method waits for 3 seconds.
+
